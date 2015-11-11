@@ -1,0 +1,64 @@
+doctype html
+html
+    head
+        title Pendaftaran
+        link(rel="stylesheet", href="bootstrap.min.css")
+        script(src="/socket.io/socket.io.js")
+        link(rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
+        script(src="http://code.jquery.com/jquery-1.10.2.js")
+        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
+        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
+        //script(src="script.js")
+        script(type='text/javascript').
+            $(function() {
+                var availableTags = !{idPasien};
+                $("#idPasien").autocomplete({
+                        source: availableTags
+                    });
+                $("#idPasien").keyup(function () {
+                    $.ajax({
+                        type: 'GET',
+                        //nilai idPasien berhasil diambil
+                        url: 'getPasien/' + $('#idPasien').val(),
+                        success: function (namaPasien) {
+                            document.getElementById("namaPasien").value = namaPasien;
+                            //result masih gagal ditangkap
+                            //alert($('#idPasien').val())
+                            //alert(namaPasien)
+                        }
+                    })
+                });
+                }
+            );
+        style.
+            div {
+                margin: 2px;
+            }
+    body
+        center
+            div
+                h4 Pendaftaran Pemeriksaan
+                p Pembayaran awal dikenakan biaya sebesar <b>120 ribu rupiah</b>
+                form
+                    table.table(style='width:400px')
+                        tr <td> <b> Kode Pasien </b></td>
+                            td <input id='idPasien' type='text' class='ui-autocomplete-input' /> </td>
+                        tr <td> <b> Nama Pasien </b></td>
+                            td <input id='namaPasien' type='text' disabled=true'/> </td>
+                        tr <td> <b> Poliklinik </b></td>
+                            td
+                                select(name='poliklinik')
+                                    each val in poliklinik
+                                        option(value='#{val.id_poliklinik}') #{val.nama}
+
+                        tr <td> <input type='submit' value='simpan'/></td>
+
+                script(type='text/javascript').
+                    var socket = io.connect('http://localhost:8080');
+                    socket.on('kurangi_antrian', function () {
+                        location.reload()
+                    });
+
+
+
+

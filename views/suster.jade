@@ -1,0 +1,39 @@
+doctype html
+html
+    head
+        title Suster
+        link(rel="stylesheet", href="bootstrap.min.css")
+        script(src="/socket.io/socket.io.js")
+        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
+        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
+
+        style.
+            div {
+                margin: 2px;
+            }
+    body
+        center
+            h3 tampilan suster
+            table.table.table-striped(style='width:400px')
+                tr <th> No Urut</th> <th>Nama </th> <th>Kelola Antrian </th>
+                each val in antrian
+                    tr#satu
+                        td=val.no_urut
+                        td=val.pasien
+                        td
+                           a(href='suster/#{val.no_urut}/hapus')
+                            button.kurang.btn-danger berhenti mengantri
+                           &nbsp;
+                           a(href='suster/#{val.no_urut}/langkahi')
+                            button.langkahi.btn-warning langkahi
+            script(type='text/javascript').
+                //fitur socket terganggu jika telah konek ke internet
+                var socket = io.connect('http://localhost:8080');
+                    $(".kurang").click(function () {
+                        socket.emit('keserver', 'mengurangi antrian');
+                    });
+
+
+
+
+
