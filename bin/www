@@ -14,9 +14,12 @@ models.sequelize.sync().then(function () {
   var io = require('socket.io').listen(server);
   io.sockets.on('connection', function (socket) { // First connection
     console.log("konek sokcet");
-    socket.on('keserver', function (data) {
-      //socket.emit('broadcast', data);
-      socket.broadcast.emit('kurangi_antrian', data);
+    socket.on('broadcast-suster', function (data) {
+      socket.broadcast.emit('kurangi-antrian-pemeriksaan', data);
+      console.log(data);
+    });
+    socket.on('broadcast-antrian-pembayaran', function (data) {
+      socket.broadcast.emit('kurangi_antrian_pembayaran', data);
       console.log(data);
     });
   });

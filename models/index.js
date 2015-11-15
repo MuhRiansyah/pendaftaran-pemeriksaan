@@ -13,6 +13,10 @@ var sequelize = new Sequelize('pendaftaranrs', 'root', '', {
     min: 0,
     idle: 10000
   },
+  define: {
+    //menghilangan kolom createAt dan updateAt
+    timestamps: false,
+  }
 });
 var db        = {};
 

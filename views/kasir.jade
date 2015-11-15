@@ -1,43 +1,31 @@
-doctype html
-html
-    head
-        title kasir
-        link(rel="stylesheet", href="bootstrap.min.css")
-        script(src="/socket.io/socket.io.js")
-        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
-        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
-        //script(src="script.js")
-        style.
-            div {
-                margin: 2px;
-            }
-    body
-        center
-            div
-                h3 Kasir
-                table.table(style='width:400px')
-                    tr <th> Tanggal </th> <th colspan='2'><input id='tanggal' type='date'/></th>
-                    tr <th> No Urut</th> <th>Pasien</th><th>Lunas/Belum </th> <th>Kelola Pembayaran </th>
-                    each val in antrianPembayaran
-                        tr
-                            td=val.no_urut
-                            td=val.id_pasien
-                            if val.status == 0
-                                td Lunas
-                            else if val.status == 1
-                                td Menunggu
-                            else if val.status == 2
-                                td Sedang Melakukan Pembayaran
-                            else if val.status == 3
-                                td Dilangkahi
-                            td
-                                a(href='kasir/#{val.id_pembayaran}/lunas')
-                                    button.kurang.btn-danger Lunas
+extends layout
+block content
+    center
+        div
+            h3 Kasir
+            table.table(style='width:700px')
+                tr <th> Tanggal </th> <th colspan='2'><input id='tanggal' type='date'/></th>
+                tr  <th>Pasien</th> <th>Poliklinik</th> <th>Status </th> <th>Kelola Pembayaran </th>
+                each val in antrianPembayaran
+                    tr
+                        td #{val.Pasien.nama}
+                        td #{val.Poliklinik.nama}
+                        if val.status == 0
+                            td Menunggu
+                        else if val.status == 1
+                            td Lunas
+                        else if val.status == 2
+                            td Sedang Melakukan Pembayaran
+                        else if val.status == 3
+                            td Dilangkahi
+                        td
+                            a(href='kasir/#{val.id}/lunas')
+                                button.kurang.btn-danger Lunas
                                 &nbsp;
-                                a(href='kasir/#{val.id_pembayaran}/langkahi')
-                                    button.langkahi.btn-warning langkahi
-                script(type='text/javascript').
-                    var socket = io.connect('http://localhost:8080');
-                    socket.on('kurangi_antrian', function () {
-                        location.reload()
-                    });
+                            a(href='kasir/#{val.id}/langkahi')
+                                button.langkahi.btn-warning langkahi
+                        script(type='text/javascript').
+                            var socket = io.connect('http://localhost:8080');
+                            socket.on('kurangi_antrian_pembayaran', function () {
+                                location.reload()
+                            });

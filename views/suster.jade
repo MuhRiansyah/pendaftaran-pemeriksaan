@@ -1,39 +1,25 @@
-doctype html
-html
-    head
-        title Suster
-        link(rel="stylesheet", href="bootstrap.min.css")
-        script(src="/socket.io/socket.io.js")
-        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
-        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
-
-        style.
-            div {
-                margin: 2px;
-            }
-    body
+extends layout
+block content
         center
-            h3 tampilan suster
+            h3 Tampilan suster untuk poliklinik #{poliklinik.nama}
             table.table.table-striped(style='width:400px')
-                tr <th> No Urut</th> <th>Nama </th> <th>Kelola Antrian </th>
-                each val in antrian
-                    tr#satu
-                        td=val.no_urut
-                        td=val.pasien
+                tr <th>Nama </th> <th>Kelola Antrian </th>
+                each val,counter in antrian
+                    tr
+                        td=val.Pasien.nama
                         td
-                           a(href='suster/#{val.no_urut}/hapus')
-                            button.kurang.btn-danger berhenti mengantri
-                           &nbsp;
-                           a(href='suster/#{val.no_urut}/langkahi')
-                            button.langkahi.btn-warning langkahi
-            script(type='text/javascript').
-                //fitur socket terganggu jika telah konek ke internet
-                var socket = io.connect('http://localhost:8080');
-                    $(".kurang").click(function () {
-                        socket.emit('keserver', 'mengurangi antrian');
-                    });
+                            if (counter==0)
+                                a(href='#{val.id}/selesai/#{idpoliklinik}')
+                                    button.btn-danger(onclick='kurangiAntrian()') Selesai Diperiksa
+                            else
+                                a(href='#{val.id}/selesai/#{idpoliklinik}')
+                                    button.btn-danger(onclick='kurangiAntrian()') Berhenti Mengantri
 
-
-
-
-
+                            &nbsp;
+                            a(href='suster/#{val.id}/langkahi')
+                                button.langkahi.btn-warning langkahi
+                        script(type='text/javascript').
+                            var socket = io.connect('http://localhost:8080');
+                            function kurangiAntrian(){
+                                socket.emit('broadcast-suster', 'mengurangi antrian');
+                            }

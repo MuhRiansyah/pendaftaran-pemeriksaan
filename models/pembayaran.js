@@ -2,17 +2,25 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Pembayaran = sequelize.define("Pembayaran", {
-      id_pembayaran : DataTypes.INTEGER,
-      no_urut : DataTypes.INTEGER,
-      id_pasien : DataTypes.INTEGER,
-      id_poliklinik : DataTypes.INTEGER,
-      status : DataTypes.INTEGER,
-      tanggal : DataTypes.DATE
+          status : DataTypes.INTEGER,
+          tanggal : DataTypes.DATE,
+          //tanggal digunakan jika ada antrian pembayaran yang tidak sempat ditangani
+          waktu_daftar : DataTypes.TIME
   }, {
           classMethods: {
               associate: function(models) {
-                  Pembayaran.hasMany(models.Poliklinik);
-                  Pembayaran.hasMany(models.Pasien);
+                  Pembayaran.belongsTo(models.Pasien, {
+                      onDelete: "CASCADE",
+                      foreignKey: {
+                          allowNull: false
+                      }
+                  });
+                  Pembayaran.belongsTo(models.Poliklinik, {
+                      onDelete: "CASCADE",
+                      foreignKey: {
+                          allowNull: false
+                      }
+                  });
               }
           }
       }

@@ -1,36 +1,19 @@
-doctype html
-html
-    head
-        title Antrian Pembayaran
-        link(rel="stylesheet", href="bootstrap.min.css")
-        script(src="/socket.io/socket.io.js")
-        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
-        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
-        //script(src="script.js")
-        style.
-            div {
-                margin: 2px;
-            }
-    body
-        center
-            div
-                h1 ANTRIAN PEMBAYARAN
-            div
-                h3 No Urut
-                h1 5
-                h4 Bambang Pamungkas <br><br>
-            div
-                h4 Daftar Tunggu
-                table.table(style='width:400px')
-                    tr <th> No Urut</th> <th>Nama </th>
-                    each val in antrianPembayaran
-                        tr#satu <td > #{val.no_urut}</td> <td> #{val.id_pasien}</td>
-                script(type='text/javascript').
-                    var socket = io.connect('http://localhost:8080');
-                    socket.on('kurangi_antrian', function () {
-                        location.reload()
-                    });
-
-
-
-
+extends layout
+block content
+    center
+        div
+            h1 ANTRIAN PEMBAYARAN
+        div
+            h3 Sedang Membayar
+            h4 <u> #{sedangMembayar.Pasien.nama} </u><br><br>
+        div
+            h4 Daftar Tunggu
+            table.table(style='width:400px')
+                tr <th>Pasien</th>
+                each val in antrianPembayaran
+                    tr#satu <td> #{val.Pasien.nama}</td>
+            script(type='text/javascript').
+                var socket = io.connect('http://localhost:8080');
+                socket.on('kurangi_antrian_pembayaran', function () {
+                    location.reload()
+                });
