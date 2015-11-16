@@ -5,27 +5,25 @@ block content
             h3 Kasir
             table.table(style='width:700px')
                 tr <th> Tanggal </th> <th colspan='2'><input id='tanggal' type='date'/></th>
-                tr  <th>Pasien</th> <th>Poliklinik</th> <th>Status </th> <th>Kelola Pembayaran </th>
+                tr  <th>Pasien</th> <th>Poliklinik</th> <th>Kelola Pembayaran </th>
                 each val in antrianPembayaran
                     tr
                         td #{val.Pasien.nama}
                         td #{val.Poliklinik.nama}
                         if val.status == 0
-                            td Menunggu
-                        else if val.status == 1
-                            td Lunas
-                        else if val.status == 2
-                            td Sedang Melakukan Pembayaran
-                        else if val.status == 3
-                            td Dilangkahi
-                        td
-                            a(href='kasir/#{val.id}/lunas')
-                                button.kurang.btn-danger Lunas
+                            td
+                                a(href='kasir/#{val.id}/lunas' )
+                                    button.kurang.btn-danger(onclick='lunas()') Lunas
                                 &nbsp;
-                            a(href='kasir/#{val.id}/langkahi')
-                                button.langkahi.btn-warning langkahi
+                                a(href='kasir/#{val.id}/langkahi')
+                                    button.langkahi.btn-warning langkahi
+                        else
+                            td <b> Pembayaran Telah Dilunasi </b>
                         script(type='text/javascript').
                             var socket = io.connect('http://localhost:8080');
                             socket.on('kurangi_antrian_pembayaran', function () {
                                 location.reload()
                             });
+                            function lunas() {
+                                socket.emit('broadcast-antrian-pembayaran', 'mengurangi antrian');
+                            }

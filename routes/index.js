@@ -48,7 +48,8 @@ router.get('/getpasien/:idPasien', function(req, res) {
 
 router.get('/kasir', function(req, res) {
     models.Pembayaran.findAll({
-        include: [ models.Pasien, models.Poliklinik]
+        include: [ models.Pasien, models.Poliklinik],
+        order : '`Pembayaran`.`status` ASC, `Pembayaran`.`waktu_daftar` ASC'
     }).then(function(antrianPembayaran) {
         res.render('kasir.jade',{
             antrianPembayaran : antrianPembayaran
@@ -56,42 +57,79 @@ router.get('/kasir', function(req, res) {
     });
 });
 
-router.get('/antrianpembayaran', function(req, res) {
-    async.series([
-            function(callback){
-                models.Pembayaran.findAll({
-                    where : {
-                        status : {
-                            $ne : 1
-                        }
-                    },
-                    include: [models.Pasien],
-                    attributes: ['Pasien.nama'],
-                    order : 'waktu_daftar'
-                }).then(function(antrian) {
-                    callback(null,antrian);
-                })
-            },
-            function(callback){
-                models.Pembayaran.find({
-                    where : {
-                        status : 1
-                    },
-                    include: [models.Pasien],
-                    attributes: ['Pasien.nama']
-                }).then(function(pasien) {
-                    callback(null,pasien);
-                })
-            }
-        ],
-        function(err,result){
-            res.render('antrian_pembayaran.jade',{
-                sedangMembayar : result[1],
-                antrianPembayaran : result[0]
-            })
-        }
-    )
+router.get('/kasir/:idAntrian/lunas/', function(req, res) {
+    //mengubah status yang menunggu menjadi berhenti mengantri
+    models.Pembayaran.update({
+        status : '1'
+    },{
+        where: { id : req.params.idAntrian }
+    }).then(function() {
+        res.redirect('/kasir');
+    });
 });
+
+router.get('/kasir/:idAntrian/langkahi/', function(req, res) {
+    //mengubah waktu_daftar pasien yang dilangkahi
+    models.Pembayaran.update({
+        waktu_daftar : '1'
+    },{
+        where: { id : req.params.idAntrian }
+    }).then(function() {
+        res.redirect('/kasir');
+    });
+});
+
+router.get('/antrianpembayaran', function(req, res) {
+    models.Pembayaran.findAll({
+        where : { status : {$ne : 1} },
+        include: [models.Pasien],
+        attributes: ['Pasien.nama'],
+        order : 'waktu_daftar'
+    }).then(function(antrian) {
+        res.render('antrian_pembayaran.jade',{
+            antrianPembayaran : antrian
+        })
+    })
+});
+
+//masih ada status sedang-membayar
+
+//router.get('/antrianpembayaran', function(req, res) {
+//    async.series([
+//            function(callback){
+//                models.Pembayaran.findAll({
+//                    where : {
+//                        status : {
+//                            $ne : 1
+//                        }
+//                    },
+//                    include: [models.Pasien],
+//                    attributes: ['Pasien.nama'],
+//                    order : 'waktu_daftar'
+//                }).then(function(antrian) {
+//                    callback(null,antrian);
+//                })
+//            },
+//            function(callback){
+//                models.Pembayaran.find({
+//                    where : {
+//                        status : 1
+//                    },
+//                    include: [models.Pasien],
+//                    attributes: ['Pasien.nama']
+//                }).then(function(pasien) {
+//                    callback(null,pasien);
+//                })
+//            }
+//        ],
+//        function(err,result){
+//            res.render('antrian_pembayaran.jade',{
+//                sedangMembayar : result[1],
+//                antrianPembayaran : result[0]
+//            })
+//        }
+//    )
+//});
 
 router.get('/antrianpemeriksaan/:id', function(req, res) {
     //status 0=menunggu,1=selesai
@@ -234,7 +272,7 @@ router.get('/suster/:id', function(req, res) {
 });
 
 router.get('/suster/:idAntrian/selesai/:idPoliklinik', function(req, res) {
-    //mengubah status yang sedang diperiksa atau menunggu menjadi berhenti mengantri
+    //mengubah status yang menunggu menjadi berhenti mengantri
     models.Antrian_Pemeriksaan.update({
         status : '1'
     },{

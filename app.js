@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users  = require('./routes/users');
+
 
 var app = express();
 
@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //jika mau dipisah seperti ini
-app.use('/users', users);
 
 app.use('/', routes);
 

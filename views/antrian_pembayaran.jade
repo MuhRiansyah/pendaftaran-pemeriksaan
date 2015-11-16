@@ -2,16 +2,15 @@ extends layout
 block content
     center
         div
-            h1 ANTRIAN PEMBAYARAN
+            h1 Antrian Pembayaran
         div
-            h3 Sedang Membayar
-            h4 <u> #{sedangMembayar.Pasien.nama} </u><br><br>
-        div
-            h4 Daftar Tunggu
-            table.table(style='width:400px')
-                tr <th>Pasien</th>
-                each val in antrianPembayaran
-                    tr#satu <td> #{val.Pasien.nama}</td>
+        each val,counter in antrianPembayaran
+            if(counter == 0)
+                h3 Sedang Membayar
+                h4 <u> #{val.Pasien.nama} </u><br><br>
+                h4 Daftar Tunggu
+            else
+                p #{val.Pasien.nama}
             script(type='text/javascript').
                 var socket = io.connect('http://localhost:8080');
                 socket.on('kurangi_antrian_pembayaran', function () {

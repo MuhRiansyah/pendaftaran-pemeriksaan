@@ -20,16 +20,46 @@
     <favorites_list name="express-example-master" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.49953488">
       <split-first>
         <leaf>
+          <file leaf-file-name="kasir.jade" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/kasir.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-7.4444447">
+                  <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pendaftaran.jade" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/pendaftaran.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-7.185185">
+                  <caret line="38" column="61" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="61" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="suster.jade" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/suster.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-6.814815">
+                  <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="86" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3899371">
-                  <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.36060607">
+                  <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
                   <folding>
-                    <element signature="e#4200#4260#0" expanded="false" />
+                    <element signature="e#2790#2845#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -39,11 +69,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="antrian_pemeriksaan.jade" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/views/antrian_pemeriksaan.jade">
+          <file leaf-file-name="antrian_pembayaran.jade" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/views/antrian_pembayaran.jade">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.45333335">
-                  <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+                <state vertical-scroll-proportion="0.8877888">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -69,7 +99,6 @@
         <option value="$PROJECT_DIR$/public/script.js" />
         <option value="$PROJECT_DIR$/views/pembayaran.jade" />
         <option value="$PROJECT_DIR$/views/home.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/models/task.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/models/index.js" />
@@ -83,14 +112,15 @@
         <option value="$PROJECT_DIR$/models/antrian.js" />
         <option value="$PROJECT_DIR$/models/pembayaran.js" />
         <option value="$PROJECT_DIR$/models/antrian_pemeriksaan.js" />
-        <option value="$PROJECT_DIR$/views/kasir.jade" />
         <option value="$PROJECT_DIR$/views/index.jade" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/views/antrian_pembayaran.jade" />
         <option value="$PROJECT_DIR$/views/suster.jade" />
         <option value="$PROJECT_DIR$/views/antrian_pemeriksaan.jade" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/antrian_pembayaran.jade" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/views/kasir.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -145,6 +175,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pendaftaran-pemeriksaan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pendaftaran-pemeriksaan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pendaftaran-pemeriksaan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -264,7 +308,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15833333" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40333334" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32636657" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -362,7 +406,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding>
-            <element signature="e#4200#4260#0" expanded="false" />
+            <element signature="e#2790#2845#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -386,7 +430,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding>
-            <element signature="e#4200#4260#0" expanded="false" />
+            <element signature="e#2790#2845#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -423,13 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2303523">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3594203">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -555,13 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/kasir.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/antrian_pemeriksaan.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -576,31 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pendaftaran.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5185184">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12374582">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/antrian_pembayaran.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26153848">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -612,29 +621,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/antrian_pemeriksaan.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8888888">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07920792">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/antrian_pembayaran.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8877888">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/kasir.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4444447">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/suster.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08851675">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="43" />
+        <state vertical-scroll-proportion="-6.814815">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pendaftaran.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.185185">
+          <caret line="38" column="61" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3899371">
-          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.36060607">
+          <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
           <folding>
-            <element signature="e#4200#4260#0" expanded="false" />
+            <element signature="e#2790#2845#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/antrian_pemeriksaan.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45333335">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
