@@ -1,0 +1,75 @@
+extends layout
+
+block content
+      script(type='text/javascript').
+         $(function () {
+                    function numberFormat(_number, _sep) {
+                       _number = typeof _number != "undefined" && _number > 0 ? _number : "";
+                       _number = _number.replace(new RegExp("^(\\d{" + (_number.length % 3 ? _number.length % 3 : 0) + "})(\\d{3})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1 ").trim();
+                       if (typeof _sep != "undefined" && _sep != " ") {
+                          _number = _number.replace(/\s/g, _sep);
+                       }
+                       return _number;
+                    }
+
+                    document.getElementById('pemberitahuan').hidden = true;
+                    document.getElementById('simpan').disabled = true;
+                    $("#idPasien").keyup(function () {
+                       $.ajax({
+                          type: 'GET',
+                          //nilai idPasien berhasil diambil
+                          url: 'getPasien/' + $('#idPasien').val(),
+                          success: function (result) {
+                             document.getElementById("namaPasien").value = result.nama;
+                             if (!result.nama) {
+                                document.getElementById('simpan').disabled = true;
+                                document.getElementById('pemberitahuan').hidden = false;
+                             } else {
+                                document.getElementById('simpan').disabled = false;
+                                document.getElementById('pemberitahuan').hidden = true;
+                             }
+                          },
+                          error: function () {
+                             document.getElementById("namaPasien").value = '';
+                             document.getElementById("saldoPasien").value = '';
+                             document.getElementById('pemberitahuan').hidden = true;
+                          }
+                       })
+                    });
+                 }
+         );
+
+      .section.section-info(style='border:1px solid white;height:80px')
+         .container
+            .row
+               .col-md-1.gambar
+                  img.center-block.img-circle.img-responsive(src='/logo.png')
+               .title
+                  h2 Rumah Sakit Insan Harapan
+                  h3 Melayani dengan Sepenuh Hati
+      .section.section-primary(style='height:800px')
+         .row
+            center: h1 Reservasi Pemeriksaan
+         .row
+            center
+               form(action='tambahreservasi' method='post',style='width:600px;font-color:black')
+                  br
+                  table.table(style='width:400px')
+                     tr: td: label.control-label Kode Pasien
+                        td <input id='idPasien' name='idPasien' type='text' class='form-control'/> </td>
+                     tr: td: label.control-label Nama
+                        td <input id='namaPasien' type='text' disabled=true' class='form-control'/> </td>
+                     tr: td: label.control-label Poliklinik
+                        td
+                           select.form-control(name='idPoliklinik')
+                              each val in poliklinik
+                                 option(value='#{val.id}') #{val.nama}
+                     tr: td( colspan='2' align='center'):  input.btn.btn-info.btn-lg(type='submit' id='simpan' value='Pesan')
+                     script(type='text/javascript').
+                        var socket = io.connect('http://localhost:8080');
+                        $('#simpan').click(function () {
+                           //socket.emit('broadcast-suster', 'menambah antrian');
+                           //jika fungsi antrian pembayaran diaktifkan
+                           socket.emit('broadcast-antrian-pembayaran', 'menambah antrian');
+                        });
+                     #pemberitahuan.alert.alert-danger: h4 anda belum terdaftar sebagai pasien rumah sakit

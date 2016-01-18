@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Sistem Reservasi Pemeriksaan Rawat Jalan
+        link(rel="stylesheet", href="/bootstrap.min.css")
+        script(src="/socket.io/socket.io.js")
+        script(src='http://code.jquery.com/jquery-1.7.1.min.js')
+        script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js')
+        style.
+            div {
+                margin: 2px;
+            }
+    body
+        center
+            div
+                li: h4 Daftar menu :
+                li: a(href='/reservasi' target='_blank') reservasi
+                li: a(href='/kelolapembayaran' target='_blank')  kelola pembayaran
+                li: a(href='/antrianpembayaran' target='_blank')  antrian pembayaran
+                li: p kelola antrian :
+                    each val in poliklinik
+                        a(href='kelolaantrian/#{val.id}' target='_blank') #{val.nama}  |
+                li: p antrian pemeriksaan :
+                    each val in poliklinik
+                        a(href='antrianpemeriksaan/#{val.id}' target='_blank') #{val.nama}  |
+        center
+            h1 Sistem Reservasi Rawat Jalan

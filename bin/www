@@ -5,6 +5,7 @@ var app = require('../app');
 var models = require("../models");
 
 
+
 app.set('port', process.env.PORT || 8080);
 
 models.sequelize.sync().then(function () {
@@ -13,14 +14,16 @@ models.sequelize.sync().then(function () {
   });
   var io = require('socket.io').listen(server);
   io.sockets.on('connection', function (socket) { // First connection
-    console.log("konek sokcet");
     socket.on('broadcast-suster', function (data) {
-      socket.broadcast.emit('kurangi-antrian-pemeriksaan', data);
-      console.log(data);
+      socket.broadcast.emit('ubah-antrian-pemeriksaan', data);
     });
     socket.on('broadcast-antrian-pembayaran', function (data) {
-      socket.broadcast.emit('kurangi_antrian_pembayaran', data);
       console.log(data);
+      socket.broadcast.emit('ubah_antrian_pembayaran', data);
+    });
+    socket.on('pembayaranke-antrianpemeriksaan-kelolaantrian', function (data) {
+      console.log(data);
+      socket.broadcast.emit('ubah-antrian-pemeriksaan', data);
     });
   });
 

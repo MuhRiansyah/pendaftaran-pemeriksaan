@@ -1,0 +1,30 @@
+extends layout
+block content
+   .section.section-info(style='border:1px solid white;height:80px')
+      .container
+         .row
+            .col-md-1.gambar
+               img.center-block.img-circle.img-responsive(src='/logo.png')
+            .title
+               h2 Rumah Sakit Insan Harapan
+               h3 Melayani dengan Sepenuh Hati
+   .section.section-primary(style='height:800px')
+      div: center: h1 Antrian Pemeriksaan #{poliklinik.nama}
+      .row
+         center(style='font-size:25px')
+            h3(style='font-size:30px') Sedang Diperiksa
+               each val,counter in antrian
+                  if(counter == 0)
+                     h4(style='font-size:25px')  #{val.Pasien.nama} <br><br>
+                     h4(style='font-size:30px')  Daftar Tunggu
+                  else
+                     p #{val.Pasien.nama}
+      script(type='text/javascript').
+         var socket = io.connect('http://localhost:8080');
+         socket.on('ubah-antrian-pemeriksaan', function () {
+            setTimeout(function () {
+               location.reload()
+            }, 1000);
+         });
+
+

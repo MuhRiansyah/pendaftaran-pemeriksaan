@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    .section.section-info(style='border:1px solid white;height:80px')
+        .container
+            .row
+                .col-md-1.gambar
+                    img.center-block.img-circle.img-responsive(src='/logo.png')
+                .title
+                    h2 Rumah Sakit Insan Harapan
+                    h3 Melayani dengan Sepenuh Hati
+    .section.section-primary(style='height:800px')
+        div: center: h2 Kelola Pembayaran
+        br
+        .row
+            center
+                table.table(style='width:550px')
+                    form(method='post' action='/getantribayar')
+                        //tr
+                        //    th Tanggal
+                        //    td(colspan='2')
+                        //        input(id='tanggal' type='date' value='#{hari_ini}' name='tanggal',style='color:black')
+                        //        &nbsp;
+                        //        input(type='submit' value='tampilkan').btn.btn-default
+                    tr  <th width='25%'>Pasien</th> <th>Poliklinik</th> <th width='40%'>Kelola Pembayaran </th>
+                    each val in antrianPembayaran
+                        tr
+                            td #{val.Pasien.nama}
+                            td #{val.Poliklinik.nama}
+                            if val.status == 0
+                                td
+                                    a(href='/kelolapembayaran/#{val.id}/#{val.Pasien.id}/#{val.Poliklinik.id}/lunas' )
+                                        button.kurang.btn.btn-danger(onclick='lunas()') Lunas
+                                    &nbsp;
+                                    a(href='/kelolapembayaran/#{val.id}/langkahi')
+                                        button.langkahi.btn.btn-warning(onclick='langkahi()') Langkahi
+                            else
+                                td <b> Pembayaran Telah Dilunasi </b>
+
+                script(type='text/javascript').
+                    var socket = io.connect('http://localhost:8080');
+                    socket.on('ubah_antrian_pembayaran', function () {
+                        location.reload()
+                    });
+                    function langkahi() {
+                        socket.emit('broadcast-antrian-pembayaran', 'melangkahi pembayaran');
+                    }
+                    function lunas() {
+                        socket.emit('broadcast-antrian-pembayaran', 'mengurangi antrian pembayaran,menambah antrian pemeriksaan');
+                        socket.emit('pembayaranke-antrianpemeriksaan-kelolaantrian', 'mengurangi antrian pembayaran,menambah antrian pemeriksaan');
+                    }

@@ -1,0 +1,26 @@
+extends layout
+block content
+    .section.section-info(style='border:1px solid white;height:80px')
+        .container
+            .row
+                .col-md-1.gambar
+                    img.center-block.img-circle.img-responsive(src='/logo.png')
+                .title
+                    h2 Rumah Sakit Insan Harapan
+                    h3 Melayani dengan Sepenuh Hati
+    .section.section-primary(style='height:800px')
+        div: center: h1 Antrian Pembayaran
+        .row
+            center(style='font-size:25px')
+                each val,counter in antrianPembayaran
+                    if(counter == 0)
+                        h3 Sedang Membayar
+                        h4 <u> #{val.Pasien.nama} </u><br><br>
+                        h4 Daftar Tunggu
+                    else
+                        p #{val.Pasien.nama}
+                    script(type='text/javascript').
+                        var socket = io.connect('http://localhost:8080');
+                        socket.on('ubah_antrian_pembayaran', function () {
+                            location.reload()
+                        });

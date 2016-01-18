@@ -1,0 +1,45 @@
+extends layout
+block content
+    .section.section-info(style='border:1px solid white;height:80px')
+        .container
+            .row
+                .col-md-1.gambar
+                    img.center-block.img-circle.img-responsive(src='/logo.png')
+                .title
+                    h2 Rumah Sakit Insan Harapan
+                    h3 Melayani dengan Sepenuh Hati
+    .section.section-primary(style='height:800px')
+        div: center: h2 Kelola Antrian Poliklinik #{poliklinik.nama}
+        br
+        center
+            table.table(style='width:500px')
+                tr <th>Nama </th> <th>Kelola Antrian </th>
+                each val,counter in antrian
+                    tr
+                        td(style='width:150px')=val.Pasien.nama
+                        td(style='width:350px')
+                            if (counter==0)
+                                a(href='/kelolaantrian/#{val.id}/selesai/#{idpoliklinik}'): button.btn.btn-danger(onclick='kurangiAntrian()') Selesai Diperiksa
+                                &nbsp;
+                                a(href='/kelolaantrian/#{val.id}/langkahi/#{idpoliklinik}'): button.btn.langkahi.btn-warning(onclick='langkahi()') Langkahi
+                            else
+                                if val.status == 0
+                                  a(href='/kelolaantrian/#{val.id}/selesai/#{idpoliklinik}'): button.btn.btn-danger(onclick='kurangiAntrian()') Berhenti Mengantri
+                                  &nbsp;
+                                  a(href='/kelolaantrian/#{val.id}/langkahi/#{idpoliklinik}'): button.btn.langkahi.btn-warning(onclick='langkahi()') Langkahi
+                                else
+                                  <b> Sudah Diperiksa</b>
+
+                        script(type='text/javascript').
+                            var socket = io.connect('http://localhost:8080');
+                            function kurangiAntrian(){
+                                socket.emit('broadcast-suster', 'mengurangi antrian');
+                            }
+                            function langkahi() {
+                                socket.emit('broadcast-suster', 'mengubah antrian');
+                            }
+                            socket.on('ubah-antrian-pemeriksaan', function () {
+                                setTimeout(function () {
+                                    location.reload()
+                                }, 1000);
+                            });
